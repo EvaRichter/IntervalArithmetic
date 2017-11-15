@@ -73,3 +73,4 @@ arithmetic on interval lists
 > divIL (z : zs) zs' = cleanList (concat ((map (divI z)  zs')) ++ (divIL zs zs'))
 
 
+

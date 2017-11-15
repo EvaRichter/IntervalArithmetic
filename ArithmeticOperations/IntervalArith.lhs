@@ -11,7 +11,7 @@
 > add x y = MkInterval (add_d (lb x)(lb y)) (add_u (rb x)(rb y))
 >
 > sub :: Interval -> Interval -> Interval
-> sub x y = MkInterval (sub_d (lb x)(lb y)) (sub_u (rb x)(rb y))
+> sub x y = MkInterval (sub_d (lb x)(rb y)) (sub_u (rb x)(lb y))
 >
 > leftIntList :: Interval -> Interval -> [ Double]
 > leftIntList x y =( mul_d (lb x)(lb y)): ((mul_d (lb x)(rb y)): ((mul_d (rb x)(lb y)):(( mul_d (rb x)(rb y)):[])))
