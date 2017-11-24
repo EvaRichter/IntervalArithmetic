@@ -35,7 +35,6 @@
 > 
 > rb :: Interval -> Double
 > rb (MkInterval a b) = b
->
 
 check whether an interval is valid, i.e. left border is smaller than right one and returns False
 if one of the borders is nan
@@ -43,8 +42,6 @@ if one of the borders is nan
 > validInt :: Interval -> Bool
 > validInt (MkInterval a b) =
 >   if ( a <= b ) then True else False
->
-
  
  Helper functions to classify intervals. We have 4 distinct classes of intervals: mixed, positive, negative, zero
 
@@ -60,21 +57,21 @@ if one of the borders is nan
 > isIntZ :: Interval -> Bool
 > isIntZ z
 >        | a == 0 && b == 0
->         = True
+>           = True
 >        | otherwise
->         = False where
->        a = lb z
->        b = rb z
+>           = False where
+>             a = lb z
+>             b = rb z
 
 
 > isIntP :: Interval -> Bool
 > isIntP z
 >        | (validInt z) && a > 0
->         = True
+>           = True
 >        | otherwise
->         = False where
->        a = lb z
->        b = rb z
+>           = False where
+>         a = lb z
+>         b = rb z
 >
 > isIntN :: Interval -> Bool
 > isIntN z
@@ -85,14 +82,6 @@ if one of the borders is nan
 >        a = lb z
 >        b = rb z
   
-
-
- 
-
- 
- 
-
-
   
 -------function to produce an Interval from two Doubles,
        derive  bounds of an interval,
@@ -115,14 +104,7 @@ if one of the borders is nan
 >     | otherwise
 >        = False
 
-> 
-> 
-> 
-> 
->
->
->
->
+
 
 
 

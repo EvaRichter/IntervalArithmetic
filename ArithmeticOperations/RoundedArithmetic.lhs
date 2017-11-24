@@ -26,39 +26,39 @@
  u= 2^(-p) where p is the precision, then phi1 denotes its predecessor
  
 > phi1 :: Double
-> phi1 = eps * (1 + 2*eps)
+> phi1 = eps * (1 + 2 * eps)
  
   eta is the smallest positive subnormal floating point number
 
 > eta :: Double
-> eta = eps * (2 *  minNormal)
+> eta = eps * (2 * minNormal)
   
  
 > add_u :: Double -> Double -> Double
-> add_u x y = (x + y) + (((abs (x + y))* phi1) + eta)
+> add_u x y = (x + y) + (((abs (x + y)) * phi1) + eta)
 
 > add_d :: Double -> Double -> Double
-> add_d x y = (x + y) - (((abs (x + y))* phi1) + eta)
+> add_d x y = (x + y) - (((abs (x + y)) * phi1) + eta)
 
 > sub_u :: Double -> Double -> Double
-> sub_u x y = (x - y) + (((abs (x - y))* phi1) + eta)
+> sub_u x y = (x - y) + (((abs (x - y)) * phi1) + eta)
 
 > sub_d :: Double -> Double -> Double
-> sub_d x y = (x - y) - (((abs (x - y))* phi1) + eta)
+> sub_d x y = (x - y) - (((abs (x - y)) * phi1) + eta)
 
 > mul_u :: Double -> Double -> Double
-> mul_u x y = (x * y) + (((abs (x * y))* phi1) + eta)
+> mul_u x y = (x * y) + (((abs (x * y)) * phi1) + eta)
 
 > mul_d :: Double -> Double -> Double
-> mul_d x y = (x * y) - (((abs (x * y))* phi1) + eta)
+> mul_d x y = (x * y) - (((abs (x * y)) * phi1) + eta)
 
 > div_u :: Double -> Double -> Double
-> div_u x y = (x / y)  + (((abs (x / y))* phi1) + eta)
+> div_u x y = (x / y)  + (((abs (x / y)) * phi1) + eta)
 
 > div_d :: Double -> Double -> Double
-> div_d x y = (x / y) - (((abs (x / y))* phi1) + eta)
->
-> 
+> div_d x y = (x / y) - (((abs (x / y)) * phi1) + eta)
+
+ 
 
 
 
