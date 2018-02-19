@@ -1,9 +1,11 @@
-> module Interval2Arith where
-> import Interval2
-> import IntervalBasics
+> module IntervalArithmetic.IntervalArithmetic where
+> import Intervals.IntervalType
+> import Intervals.IntervalProp
+> import Intervals.IntervalOps
 > import Numeric.IEEE
-> import RoundedArithmetic
+> import IntervalArithmetic.RoundedArithmetic
 > import Data.List
+> import Control.Exception
 >
 
  implementation of arithmetic operations +,-,*,/ for intervals using the
@@ -30,6 +32,13 @@
 > mul x y = num2Int (foldr (min) (infinity) (leftIntList x y))
 >                      (foldr (max)(-infinity) (rightIntList x y))
 >
+> -- division where divisor does not contain zeros, result is always a single interval,
+> -- the exception of dividing by zero is handled by the control.exception module
+> 
+> divplus :: Interval -> Interval -> Interval
+> divplus z z' = mul z (num2Int (div_d 1 d) ( div_u 1 c))
+>         where c = lb z'
+>               d = rb z' 
 
 > divI ::  Interval -> Interval -> [Interval]
 > divI z z' 

@@ -1,6 +1,6 @@
-> module IntervalBasics where
+> module Interval2Basics where
 > import Numeric.IEEE
-> import Interval2
+> import IntervalArithmetic.ArithmeticOperations.Interval2
 > import RoundedArithmetic
 > import Data.List
 
@@ -85,7 +85,7 @@
 > 
 > isIncl :: Interval -> Interval -> Bool
 > isIncl z z'
->     | z == MkInterval nan nan
+>     | z == IV nan nan
 >       = True
 >     | lb z' <= lb z && rb z <= rb z'
 >       = True

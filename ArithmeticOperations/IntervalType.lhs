@@ -12,35 +12,35 @@
  the empty interval is represented by [nan,nan]
 
 
-> data Interval = MkInterval Double Double
+> data Interval = IV Double Double
 >
  
 
 > instance Show Interval where
->      show (MkInterval a b) = "["++(show a)++";" ++ (show b)++"]"
+>      show (IV a b) = "["++(show a)++";" ++ (show b)++"]"
 >
 
  instance ReadS Interval where
-      readInt (']':s) = [((MkInterval a b), t)| ( a,  r)    <- readInt  s ,
+      readInt (']':s) = [((IV a b), t)| ( a,  r)    <- readInt  s ,
                                                   ( ',', r2)  <- readInt  r ,
                                                   (b, '[':t) <- readInt  r2  ]
 
  readInt :: ReadS Interval
- readInt (']':s) = [((MkInterval a b), t)| ( a,  r)    <- read  s ,
+ readInt (']':s) = [((IV a b), t)| ( a,  r)    <- read  s ,
                                            ( ',', r2)  <- read  r ,
                                            (b, '[': t) <- read r2  ]
 
 > lb :: Interval -> Double 
-> lb (MkInterval a b) = a
+> lb (IV a b) = a
 > 
 > rb :: Interval -> Double
-> rb (MkInterval a b) = b
+> rb (IV a b) = b
 
 check whether an interval is valid, i.e. left border is smaller than right one and returns False
 if one of the borders is nan
 
 > validInt :: Interval -> Bool
-> validInt (MkInterval a b) =
+> validInt (IV a b) =
 >   if ( a <= b ) then True else False
  
  Helper functions to classify intervals. We have 4 distinct classes of intervals: mixed, positive, negative, zero
@@ -88,10 +88,10 @@ if one of the borders is nan
        test for empty intervals
 
 > num2Int :: Double -> Double -> Interval
-> num2Int a b = MkInterval a b
+> num2Int a b = IV a b
 >
 > givebs :: Interval -> (Double, Double)
-> givebs (MkInterval a b) = (a,b)
+> givebs (IV a b) = (a,b)
 >
 > isEmpty :: Interval -> Bool
 > isEmpty z

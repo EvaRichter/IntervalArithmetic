@@ -1,4 +1,4 @@
-> module IntervalBasics where
+> module Interval2Basics where
 > import Numeric.IEEE
 > import Interval2
 > import RoundedArithmetic

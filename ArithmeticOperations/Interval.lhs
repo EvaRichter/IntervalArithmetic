@@ -1,4 +1,4 @@
-> module Interval where
+> module Interval1 where
 > import Numeric.IEEE
 > import Data.List
 
@@ -11,11 +11,12 @@
  the empty interval is represented by [nan,nan]
 
 
-> data Interval = MkInterval Double Double
+> data Interval = Empty|MkInterval Double Double
 >
  
 
 > instance Show Interval where
+>      show Empty            = "[e]"
 >      show (MkInterval a b) = "["++(show a)++";" ++ (show b)++"]"
 >
 
@@ -31,15 +32,20 @@
 
 > lb :: Interval -> Double 
 > lb (MkInterval a b) = a
+> lb Empty = nan
 > 
 > rb :: Interval -> Double
 > rb (MkInterval a b) = b
+> rb Empty = nan
 >
 > bounds :: Interval -> (Double, Double)
 > bounds z = (lb z, rb z)
 >
 > num2Int :: Double -> Double -> Interval
 > num2Int a b = MkInterval a b
+>
+> emptyInt :: Interval
+> emptyInt = Empty
 >
 > {-
 > while nan == nan returns false for Doubles we want to have
@@ -54,4 +60,5 @@
 > -}
 > 
 > instance Eq Interval where
->   z == z'= (lb z == lb z' && rb z == rb z')
+>   Empty == Empty = True
+>   z == z'        = (lb z == lb z' && rb z == rb z')
